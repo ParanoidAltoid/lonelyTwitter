@@ -43,4 +43,20 @@ public class LonelyTwitterActivityUITest extends
 		textInput.setText(text);
 		((Button) activity.findViewById(ca.ualberta.cs.lonelytwitter.R.id.save)).performClick();
 	}
+	
+	
+	public void testSetText(){
+		String text = "AL";
+		
+		instrumentation.runOnMainSync(new Runnable() {
+			@Override
+			public void run(){
+				textInput.setText("AL");				
+			}
+		});
+		
+		instrumentation.waitForIdleSync();
+
+		assertEquals("Does this work", text, textInput.getText().toString());
+	}
 }
